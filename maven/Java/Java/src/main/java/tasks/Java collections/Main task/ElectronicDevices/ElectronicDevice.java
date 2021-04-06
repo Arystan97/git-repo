@@ -1,32 +1,33 @@
 package ElectronicDevices;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class ElectronicDevice implements Comparable<ElectronicDevice>
 {
-    protected int energyConsumption;
-    public boolean isTurnOn;
+    private int energyConsumption;
+    private boolean isTurnOn;
 
-    public ElectronicDevice(int energyConsumption){
+    public void setEnergyConsumption(int energyConsumption){
         this.energyConsumption = energyConsumption;
     }
+    public int getEnergyConsumption(){
+        return energyConsumption;
+    }
 
-    public void TurnOn(){
+    private void turnOn(){
         isTurnOn = true;
     }
 
-    public void TurnOff(){
+    private void turnOff(){
         isTurnOn = false;
         energyConsumption = 0;
     }
 
     public void AskToTurnOn(String answer){
         switch(answer){
-            case "yes" -> TurnOn();
-            case "no" -> TurnOff();
+            case "yes" -> turnOn();
+            case "no" -> turnOff();
         }
     }
 
@@ -46,7 +47,7 @@ public class ElectronicDevice implements Comparable<ElectronicDevice>
         int EnergyConsumptionValue = sc.nextInt();
         TurnOnDevices = TurnOnDevices.stream().filter(device -> device.energyConsumption == EnergyConsumptionValue).collect(Collectors.toList());
         if(TurnOnDevices.isEmpty()){
-            System.out.println("No device found");
+            System.out.println("No devices found");
         }else{
             TurnOnDevices.forEach(System.out::println);
         }
@@ -55,5 +56,9 @@ public class ElectronicDevice implements Comparable<ElectronicDevice>
     @Override
     public int compareTo(ElectronicDevice o){
         return (this.energyConsumption - o.energyConsumption);
+    }
+
+    public String toString(){
+        return "Energy Consumption: " + energyConsumption + " Watts";
     }
 }

@@ -33,6 +33,6 @@ public class Task4{
     public static void main(String[] args) throws Exception
     {
         String data = readFileAsString();
-        System.out.println(data+'\n'+Reverse(data));
+        System.out.println(data + '\n' + Reverse(data));
     }
 }

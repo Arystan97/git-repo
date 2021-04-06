@@ -19,9 +19,12 @@ public class Main
         String answer2 = sc.nextLine();
         System.out.println("Turn on Lamp?");
         String answer3 = sc.nextLine();
-        ElectronicDevice tv = new TV(TvEnergyConsumptionValue);
-        ElectronicDevice microwave = new Microwave(MicrowaveEnergyConsumptionValue);
-        ElectronicDevice lamp = new Lamp(LampEnergyConsumptionValue);
+        ElectronicDevice tv = new TV();
+        tv.setEnergyConsumption(TvEnergyConsumptionValue);
+        ElectronicDevice microwave = new Microwave();
+        microwave.setEnergyConsumption(MicrowaveEnergyConsumptionValue);
+        ElectronicDevice lamp = new Lamp();
+        lamp.setEnergyConsumption(LampEnergyConsumptionValue);
         tv.AskToTurnOn(answer1);
         microwave.AskToTurnOn(answer2);
         lamp.AskToTurnOn(answer3);
