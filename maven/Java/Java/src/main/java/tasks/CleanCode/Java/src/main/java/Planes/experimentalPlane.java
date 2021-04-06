@@ -37,4 +37,8 @@ public class experimentalPlane extends Plane{
                 "model='" + model + '\'' +
                 '}';
     }
+
+    public ExperimentalTypes getType() {
+        return type;
+    }
 }

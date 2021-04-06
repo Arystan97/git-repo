@@ -6,27 +6,26 @@ import java.util.*;
 public class Airport {
     private final List<? extends Plane> planes;
     List<MilitaryPlane> militaryPlanes = getMilitaryPlanes();
+    List<MilitaryPlane> militaryPlane = new ArrayList<>();
 
     public List<PassengerPlane> getPassengerPlane() {
-        List<PassengerPlane> x = new ArrayList<>();
+        List<PassengerPlane> passengerPlane = new ArrayList<>();
         for (Plane p : this.planes) {
             if (p instanceof PassengerPlane) {
-                x.add((PassengerPlane) p);
+                passengerPlane.add((PassengerPlane) p);
             }
         }
-        return x;
+        return passengerPlane;
     }
 
     public List<MilitaryPlane> getMilitaryPlanes() {
-        List<MilitaryPlane> militaryPlanes = new ArrayList<>();
         if (planes != null) {
-            for (Plane plane : planes) {
+            for (Plane plane : planes)
                 if (plane instanceof MilitaryPlane) {
-                    militaryPlanes.add((MilitaryPlane) plane);
+                    militaryPlane.add((MilitaryPlane) plane);
                 }
-            }
         }
-        return militaryPlanes;
+        return militaryPlane;
     }
 
     public PassengerPlane getPassengerPlaneWithMaxPassengersCapacity() {
@@ -41,23 +40,21 @@ public class Airport {
     }
 
     public List<MilitaryPlane> getTransportMilitaryPlanes() {
-    List<MilitaryPlane> transportMilitaryPlanes = new ArrayList<>();
         for (MilitaryPlane plane : militaryPlanes) {
             if (plane.getType() == MilitaryType.TRANSPORT) {
-                transportMilitaryPlanes.add(plane);
+                militaryPlane.add(plane);
             }
         }
-    return transportMilitaryPlanes;
+    return militaryPlane;
     }
 
     public List<MilitaryPlane> getBomberMilitaryPlanes() {
-        List<MilitaryPlane> bomberMilitaryPlanes = new ArrayList<>();
         for (MilitaryPlane plane : militaryPlanes) {
             if (plane.getType() == MilitaryType.BOMBER) {
-                bomberMilitaryPlanes.add(plane);
+                militaryPlane.add(plane);
             }
         }
-        return bomberMilitaryPlanes;
+        return militaryPlane;
 
     }
 
@@ -101,7 +98,8 @@ public class Airport {
 
     @Override
     public String toString() {
-        return "Airport{Planes=" + planes.toString() +
+        return "Airport{" +
+                "Planes=" + planes.toString() +
                 '}';
     }
 
