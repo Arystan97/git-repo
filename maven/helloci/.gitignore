@@ -15,5 +15,5 @@ target/
 *.DS_Store
 [Tt]humbs.db
 
-*.idea
+.idea
 *.iml
